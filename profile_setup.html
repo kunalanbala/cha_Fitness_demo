@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Profile - FitTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="profile-setup-page">
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-icon">💪</div>
+                <div class="logo-text">FeatureTrack</div>
+            </div>
+            <button id="logout-btn" class="btn btn-secondary btn-sm">
+                <span>🚪</span> Logout
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="profile-view" class="view active">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Setup Your Profile</h3>
+                </div>
+
+                <form id="profile-form">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" id="user-name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input type="number" id="user-age" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <select id="user-gender" class="form-select">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Weight (kg)</label>
+                            <input type="number" id="user-weight" class="form-input" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Height (cm)</label>
+                            <input type="number" id="user-height" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Activity Level</label>
+                            <select id="activity-level" class="form-select">
+                                <option value="1.2">Sedentary (office job)</option>
+                                <option value="1.375">Light Exercise (1-2 days/week)</option>
+                                <option value="1.55">Moderate Exercise (3-5 days/week)</option>
+                                <option value="1.725">Heavy Exercise (6-7 days/week)</option>
+                                <option value="1.9">Athlete (2x per day)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label">Fitness Goal</label>
+                            <select id="fitness-goal" class="form-select">
+                                <option value="weight-loss">Weight Loss</option>
+                                <option value="muscle-gain">Muscle Gain</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="athletic">Athletic Performance</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-right mt-2">
+                        <button type="submit" class="btn btn-primary">
+                            <span>💾</span> Save & Continue to Dashboard
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Track your daily workouts and nutrition intake with detailed nutritional information and personalized recommendations.">
+  <meta name="keywords" content="gym tracker, workout tracker, nutrition tracker, fitness app, calorie counter">
+  <title>Login - Cha Fitness</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">💪</div>
+        <div class="logo-text">Cha Fitness</div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard-view">
+          <span>📊</span> Dashboard
+        </button>
+        <button class="nav-btn" data-view="workout-view">
+          <span>🏋️‍♂️</span> Workouts
+        </button>
+        <button class="nav-btn" data-view="nutrition-view">
+          <span>🍎</span> Nutrition
+        </button>
+        <button class="nav-btn" data-view="profile-view">
+          <span>👤</span> Profile
+        </button>
+      </nav>
+      <button id="logout-btn" class="btn btn-secondary btn-sm">
+        <span>🚪</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Login View (Moved to login.html) -->
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view" class="view active">
+      <h2 class="text-center mb-2">Today's Overview</h2>
+
+      <!-- Summary Stats -->
+      <div class="grid grid-4 mb-2">
+        <div class="stat-card">
+          <div class="stat-label">Calories Consumed</div>
+          <div class="stat-value" id="total-calories-consumed">0</div>
+          <div class="stat-subtext">kcal</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Calories Burned</div>
+          <div class="stat-value" id="total-calories-burned">0</div>
+          <div class="stat-subtext">kcal</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Net Calories</div>
+          <div class="stat-value" id="net-calories">0</div>
+          <div class="stat-subtext">kcal</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Workouts</div>
+          <div class="stat-value" id="total-workouts">0</div>
+          <div class="stat-subtext">exercises</div>
+        </div>
+      </div>
+
+      <!-- Macronutrients -->
+      <div class="card mb-2">
+        <div class="card-header">
+          <h3 class="card-title">Macronutrients</h3>
+          <span class="card-icon">🍽️</span>
+        </div>
+        <div class="grid grid-3">
+          <div class="progress-container">
+            <div class="progress-header">
+              <span class="progress-label">Protein</span>
+              <span class="progress-value"><span id="protein-value">0</span>g / 150g</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="protein-progress" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-header">
+              <span class="progress-label">Carbs</span>
+              <span class="progress-value"><span id="carbs-value">0</span>g / 250g</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="carbs-progress" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-header">
+              <span class="progress-label">Fats</span>
+              <span class="progress-value"><span id="fats-value">0</span>g / 70g</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="fats-progress" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Micronutrients -->
+      <div class="grid grid-2 mb-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Vitamins</h3>
+            <span class="card-icon">💊</span>
+          </div>
+          <div id="vitamins-list">
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Vitamin A</span>
+                <span class="progress-value"><span id="vitamin-a-value">0</span>%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="vitamin-a-progress" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Vitamin C</span>
+                <span class="progress-value"><span id="vitamin-c-value">0</span>%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="vitamin-c-progress" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Vitamin D</span>
+                <span class="progress-value"><span id="vitamin-d-value">0</span>%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="vitamin-d-progress" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Minerals</h3>
+            <span class="card-icon">⚡</span>
+          </div>
+          <div id="minerals-list">
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Iron</span>
+                <span class="progress-value"><span id="iron-value">0</span>%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="iron-progress" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Calcium</span>
+                <span class="progress-value"><span id="calcium-value">0</span>%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="calcium-progress" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Magnesium</span>
+                <span class="progress-value"><span id="magnesium-value">0</span>%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="magnesium-progress" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Daily Recommendations</h3>
+          <span class="card-icon">💡</span>
+        </div>
+        <ul id="recommendations-list" class="item-list">
+          <li class="item">
+            <div class="item-content">
+              <div class="logo-large">Cha Fitness</div>
+              <div class="item-details">
+                <span class="item-detail">Add your first workout or meal to get personalized recommendations.</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Workout View -->
+    <div id="workout-view" class="view">
+      <h2 class="text-center mb-2">Workout Tracker</h2>
+
+      <div class="grid grid-2">
+        <!-- Add Workout Form -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Log Workout</h3>
+            <span class="card-icon">➕</span>
+          </div>
+          <form id="workout-form">
+            <div class="form-group">
+              <label class="form-label" for="exercise-name">Exercise</label>
+              <select class="form-select" id="exercise-name" required>
+                <option value="">Select an exercise...</option>
+                <optgroup label="Cardio">
+                  <option value="Running">Running</option>
+                  <option value="Cycling">Cycling</option>
+                  <option value="Swimming">Swimming</option>
+                  <option value="Jump Rope">Jump Rope</option>
+                  <option value="Rowing">Rowing</option>
+                </optgroup>
+                <optgroup label="Strength">
+                  <option value="Bench Press">Bench Press</option>
+                  <option value="Squats">Squats</option>
+                  <option value="Deadlifts">Deadlifts</option>
+                  <option value="Pull-ups">Pull-ups</option>
+                  <option value="Push-ups">Push-ups</option>
+                  <option value="Bicep Curls">Bicep Curls</option>
+                  <option value="Shoulder Press">Shoulder Press</option>
+                </optgroup>
+                <optgroup label="Flexibility">
+                  <option value="Yoga">Yoga</option>
+                  <option value="Stretching">Stretching</option>
+                  <option value="Pilates">Pilates</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="duration">Duration (minutes)</label>
+              <input type="number" class="form-input" id="duration" min="1" placeholder="30" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="intensity">Intensity</label>
+              <select class="form-select" id="intensity" required>
+                <option value="low">Low</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sets">Sets (optional)</label>
+              <input type="number" class="form-input" id="sets" min="1" placeholder="3">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reps">Reps (optional)</label>
+              <input type="number" class="form-input" id="reps" min="1" placeholder="12">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              ➕ Add Workout
+            </button>
+          </form>
+        </div>
+
+        <!-- Workout List -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Today's Workouts</h3>
+            <span class="card-icon">📋</span>
+          </div>
+          <ul id="workout-list" class="item-list">
+            <div class="empty-state">
+              <div class="empty-state-icon">🏋️</div>
+              <div class="empty-state-text">No workouts logged yet. Start tracking!</div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nutrition View -->
+    <div id="nutrition-view" class="view">
+      <h2 class="text-center mb-2">Nutrition Tracker</h2>
+
+      <div class="grid grid-2">
+        <!-- Add Food Form -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Log Food</h3>
+            <span class="card-icon">➕</span>
+          </div>
+          <form id="nutrition-form">
+            <div class="form-group">
+              <label class="form-label" for="food-name">Food Item</label>
+              <select class="form-select" id="food-name" required>
+                <option value="">Select a food...</option>
+                <optgroup label="Proteins">
+                  <option value="Chicken Breast">Chicken Breast</option>
+                  <option value="Salmon">Salmon</option>
+                  <option value="Eggs">Eggs</option>
+                  <option value="Greek Yogurt">Greek Yogurt</option>
+                  <option value="Tofu">Tofu</option>
+                </optgroup>
+                <optgroup label="Carbohydrates">
+                  <option value="Brown Rice">Brown Rice</option>
+                  <option value="Oatmeal">Oatmeal</option>
+                  <option value="Whole Wheat Bread">Whole Wheat Bread</option>
+                  <option value="Sweet Potato">Sweet Potato</option>
+                  <option value="Quinoa">Quinoa</option>
+                </optgroup>
+                <optgroup label="Vegetables">
+                  <option value="Broccoli">Broccoli</option>
+                  <option value="Spinach">Spinach</option>
+                  <option value="Carrots">Carrots</option>
+                  <option value="Bell Peppers">Bell Peppers</option>
+                </optgroup>
+                <optgroup label="Fruits">
+                  <option value="Banana">Banana</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Orange">Orange</option>
+                  <option value="Berries">Berries</option>
+                </optgroup>
+                <optgroup label="Healthy Fats">
+                  <option value="Avocado">Avocado</option>
+                  <option value="Almonds">Almonds</option>
+                  <option value="Olive Oil">Olive Oil</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="portion">Portion Size (grams)</label>
+              <input type="number" class="form-input" id="portion" min="1" placeholder="100" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="meal-type">Meal Type</label>
+              <select class="form-select" id="meal-type" required>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              ➕ Add Food
+            </button>
+          </form>
+        </div>
+
+        <!-- Food List -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Today's Meals</h3>
+            <span class="card-icon">📋</span>
+          </div>
+          <ul id="nutrition-list" class="item-list">
+            <div class="empty-state">
+              <div class="empty-state-icon">🥗</div>
+              <div class="empty-state-text">No meals logged yet. Start tracking!</div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile View -->
+    <div id="profile-view" class="view">
+      <h2 class="text-center mb-2">Your Profile & Goals</h2>
+
+      <!-- Profile Setup/Edit Form -->
+      <div id="profile-setup" class="card mb-2">
+        <div class="card-header">
+          <h3 class="card-title">Personal Information</h3>
+          <span class="card-icon">📝</span>
+        </div>
+        <form id="profile-form">
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label class="form-label" for="user-name">Name</label>
+              <input type="text" class="form-input" id="user-name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="user-age">Age</label>
+              <input type="number" class="form-input" id="user-age" min="15" max="100" placeholder="25" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="user-gender">Gender</label>
+              <select class="form-select" id="user-gender" required>
+                <option value="">Select gender...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="user-weight">Weight (kg)</label>
+              <input type="number" class="form-input" id="user-weight" min="30" max="300" step="0.1" placeholder="70"
+                required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="user-height">Height (cm)</label>
+              <input type="number" class="form-input" id="user-height" min="100" max="250" placeholder="170" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="activity-level">Activity Level</label>
+              <select class="form-select" id="activity-level" required>
+                <option value="">Select activity level...</option>
+                <option value="1.2">Sedentary (little or no exercise)</option>
+                <option value="1.375">Lightly Active (1-3 days/week)</option>
+                <option value="1.55">Moderately Active (3-5 days/week)</option>
+                <option value="1.725">Very Active (6-7 days/week)</option>
+                <option value="1.9">Extremely Active (athlete/physical job)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fitness-goal">Primary Goal</label>
+              <select class="form-select" id="fitness-goal" required>
+                <option value="">Select your goal...</option>
+                <option value="weight-loss">Weight Loss</option>
+                <option value="muscle-gain">Muscle Gain</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="athletic">Athletic Performance</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">
+            💾 Save Profile
+          </button>
+        </form>
+      </div>
+
+      <!-- Target Goal Setter -->
+      <div id="target-goal-section" class="card mb-2 hidden">
+        <div class="card-header">
+          <h3 class="card-title">Set Your Target Goal</h3>
+          <span class="card-icon">🎯</span>
+        </div>
+        <form id="target-goal-form">
+          <div class="grid grid-3">
+            <div class="form-group">
+              <label class="form-label" for="goal-type">Goal Type</label>
+              <select class="form-select" id="goal-type" required>
+                <option value="">Select goal...</option>
+                <option value="weight-loss">🔥 Weight Loss</option>
+                <option value="muscle-gain">💪 Muscle Gain</option>
+                <option value="maintain">⚖️ Maintain Weight</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="target-weight">Target Weight (kg)</label>
+              <input type="number" class="form-input" id="target-weight" max="300" step="0.1"
+                placeholder="Enter your goal weight" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="target-timeline">Timeline (months)</label>
+              <select class="form-select" id="target-timeline" required>
+                <option value="1">1 month</option>
+                <option value="2">2 months</option>
+                <option value="3">3 months</option>
+                <option value="4">4 months</option>
+                <option value="5">5 months</option>
+                <option value="6" selected>6 months</option>
+                <option value="7">7 months</option>
+                <option value="8">8 months</option>
+                <option value="9">9 months</option>
+                <option value="10">10 months</option>
+                <option value="11">11 months</option>
+                <option value="12">12 months</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            📊 Calculate My Plan
+          </button>
+        </form>
+      </div>
+
+      <!-- Target Goal Results -->
+      <div id="target-goal-results" class="hidden">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3 class="card-title">Your Personalized Plan</h3>
+            <span class="card-icon">📋</span>
+          </div>
+          <div id="target-plan-content"></div>
+        </div>
+      </div>
+
+      <!-- Profile Stats Display -->
+      <div id="profile-stats" class="hidden">
+        <div class="grid grid-4 mb-2">
+          <div class="stat-card">
+            <div class="stat-label">BMR</div>
+            <div class="stat-value" id="bmr-value">0</div>
+            <div class="stat-subtext">kcal/day</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">TDEE</div>
+            <div class="stat-value" id="tdee-value">0</div>
+            <div class="stat-subtext">kcal/day</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">BMI</div>
+            <div class="stat-value" id="bmi-value">0</div>
+            <div class="stat-subtext">kg/m²</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Goal</div>
+            <div class="stat-value" id="goal-display" style="font-size: 1.2rem;">-</div>
+            <div class="stat-subtext">primary focus</div>
+          </div>
+        </div>
+
+        <!-- Monthly Progress Goals -->
+        <h3 class="text-center mb-2">Monthly Progress Goals</h3>
+
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3 class="card-title">12-Month Roadmap</h3>
+            <span class="card-icon">📅</span>
+          </div>
+          <div id="monthly-goals-container">
+            <div class="empty-state">
+              <div class="empty-state-text">Complete your profile to see monthly goals</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Improvement Strategies -->
+        <h3 class="text-center mb-2">Your Improvement Strategies</h3>
+
+        <div class="grid grid-3 mb-2">
+          <!-- 3 Month Strategy -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">3-Month Plan</h3>
+              <span class="badge badge-success">Foundation</span>
+            </div>
+            <div id="strategy-3month">
+              <div class="empty-state">
+                <div class="empty-state-text">Complete your profile to see strategies</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 Month Strategy -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">6-Month Plan</h3>
+              <span class="badge badge-primary">Progress</span>
+            </div>
+            <div id="strategy-6month">
+              <div class="empty-state">
+                <div class="empty-state-text">Complete your profile to see strategies</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12 Month Strategy -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">1-Year Plan</h3>
+              <span class="badge badge-warning">Transformation</span>
+            </div>
+            <div id="strategy-12month">
+              <div class="empty-state">
+                <div class="empty-state-text">Complete your profile to see strategies</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary" onclick="editProfile()" style="width: 100%;">
+          ✏️ Edit Profile
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
